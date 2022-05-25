@@ -2,6 +2,7 @@ import React from "react";
 
 const LiveSearch = ({ search, setSearch }) => {
   return (
+
     <div className="live_search">
       <form onSubmit={(e) => e.preventDefault()}>
         <input
@@ -10,6 +11,7 @@ const LiveSearch = ({ search, setSearch }) => {
           role="searchbox"
           placeholder="search news..."
           className="live_search_input"
+          value={search}
           onChange={(e) => setSearch(e.target.value.toLocaleLowerCase())}
         />{" "}
         <button type="submit" className="live_search_btn">

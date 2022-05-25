@@ -7,20 +7,23 @@ import "./Main.css";
 const Main = () => {
   const [news, setNews] = useState([]);
   const [search, setSearch] = useState("");
+
   return (
     <div>
       <Header search={search} setSearch={setSearch} />
       <GetApi
-        news={news.filter(
-          (searchNews) =>
-            searchNews.author?.toLowerCase().includes(search) ||
-            searchNews.title?.toLowerCase().includes(search)
-        )}
+        search={search}
+        news={news}
         setNews={setNews}
-      />
+        />
       <Footer />
     </div>
   );
 };
 
+// news={news.filter(
+//   (searchNews) =>
+//     searchNews.author?.toLowerCase().includes(search) ||
+//     searchNews.title?.toLowerCase().includes(search)
+// )}
 export default Main;

@@ -1,17 +1,19 @@
 import axios from "axios";
 import React, { useCallback, useEffect } from "react";
 
-const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=55bfc216f16a4f40bce62049a80c1140`;
+// `https://newsapi.org/v2/everything?q=${search}&pageSize=5&apiKey=55bfc216f16a4f40bce62049a80c1140`
+// 'https://newsapi.org/v2/top-headlines?country=us&pageSize=5&apiKey=55bfc216f16a4f40bce62049a80c1140'
 
-const GetApi = ({ news, setNews }) => {
+const GetApi = ({ news, setNews, search }) => {
 
+  const apiUrl = !search ? 'https://newsapi.org/v2/top-headlines?country=us&pageSize=5&apiKey=55bfc216f16a4f40bce62049a80c1140' : `https://newsapi.org/v2/everything?q=${search}&pageSize=5&apiKey=55bfc216f16a4f40bce62049a80c1140`
   const getApi = useCallback(() => {
     axios.get(apiUrl).then((res) => {
       const result = res.data.articles;
       setNews((prev) => (prev = result));
     });
     console.log("GET API");
-  }, [setNews]);
+  }, [setNews,apiUrl]);
 
   useEffect(() => {
     getApi();
